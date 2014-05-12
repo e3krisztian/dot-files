@@ -1,0 +1,2 @@
+# cd into directorys with directory name only
+shopt -s autocd
