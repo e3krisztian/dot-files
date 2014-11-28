@@ -1,2 +1,1 @@
-export EDITOR='/opt/st2/sublime_text -w'
-alias e=$EDITOR
+[ -x "$HOME/bin/e" ] && export EDITOR="$HOME/bin/e"
