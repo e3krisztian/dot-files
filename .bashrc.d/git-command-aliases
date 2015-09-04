@@ -1,4 +1,4 @@
-alias gg='git gui'
 alias gd='git diff'
+alias gg='git gui'
+alias gl='git lg'
 alias gs='git s'
-alias lg='git lg'
