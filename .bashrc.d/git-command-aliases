@@ -1,0 +1,4 @@
+alias gg='git gui'
+alias gd='git diff'
+alias gs='git s'
+alias lg='git lg'
