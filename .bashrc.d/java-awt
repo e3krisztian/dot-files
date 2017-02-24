@@ -1,0 +1,3 @@
+# Running some java applications gives blank window.
+# https://bbs.archlinux.org/viewtopic.php?id=159016
+export _JAVA_AWT_WM_NONREPARENTING=1
