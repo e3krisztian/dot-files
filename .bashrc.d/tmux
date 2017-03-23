@@ -1,0 +1,26 @@
+if [ -n "$TMUX" ]; then
+    tmux set status-fg black > /dev/null
+    exit_feedback() {
+        if [[ $? == 0 ]]
+        then
+            tmux set status-bg green > /dev/null
+        else
+            tmux set status-bg red > /dev/null
+        fi
+    }
+    export TERM=screen-256color
+elif xsetroot -solid '#336633' >& /dev/null; then
+    # Change the background color depending on the last command's exit value
+    exit_feedback() {
+        if [[ $? == 0 ]]
+        then
+	    xsetroot -solid '#336633'
+        else
+	    xsetroot -solid '#660000'
+	fi
+    }
+else
+    exit_feedback() { :; }
+fi
+
+PROMPT_COMMAND="exit_feedback; $PROMPT_COMMAND"
