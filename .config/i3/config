@@ -40,7 +40,7 @@ bindsym $mod+Return exec st -f "Liberation Mono:size=12" tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym $mod+F4 kill
+bindsym $mod+F4      kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
@@ -163,19 +163,21 @@ bar {
 # Media & Thinkpad special keys
 
 # suspend
-bindsym XF86Sleep exec systemctl suspend
+bindsym XF86Sleep                  exec systemctl suspend
 
-bindsym XF86AudioMute        exec pulseaudio-ctl mute
-bindsym XF86AudioMicMute     exec pulseaudio-ctl mute-input
+bindsym XF86AudioMute              exec pulseaudio-ctl mute
+bindsym XF86AudioMicMute           exec pulseaudio-ctl mute-input
 
-bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
+bindsym XF86AudioRaiseVolume       exec pulseaudio-ctl up 1
+bindsym Shift+XF86AudioRaiseVolume exec pulseaudio-ctl up 10
 
-bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
+bindsym XF86AudioLowerVolume       exec pulseaudio-ctl down 1
+bindsym Shift+XF86AudioLowerVolume exec pulseaudio-ctl down 10
 
 # should be something sensible
-bindsym XF86Launch1          exec st -e xev
+bindsym XF86Launch1                exec st -e xev
 
 # screen lock
-bindsym $mod+l exec /usr/bin/i3lock -f -c 053005
+bindsym $mod+l                     exec /usr/bin/i3lock -f -c 053005
 
 # Applications
