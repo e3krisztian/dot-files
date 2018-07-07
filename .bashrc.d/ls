@@ -2,3 +2,8 @@
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias lh='ll -h'
+
+function lw() {
+    ls -alF "$(which "$@")"
+}

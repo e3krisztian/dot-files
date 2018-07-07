@@ -24,7 +24,18 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# locale
 export LANGUAGE="en_US:en"
 export LC_MESSAGES="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
+
+# ssh agent
+if [ "$SSH_AUTH_SOCK" = "" ] ; then
+    if [ "$DISPLAY" = "" ] ; then
+        eval $(ssh-agent -s)
+    else
+        eval $(gnome-keyring-daemon -d)
+    fi
+    export SSH_AUTH_SOCK
+fi

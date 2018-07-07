@@ -8,7 +8,7 @@ if [ -n "$TMUX" ]; then
             tmux set status-bg red > /dev/null
         fi
     }
-    export TERM=screen-256color
+    export TERM=tmux-256color
 elif xsetroot -solid '#336633' >& /dev/null; then
     # Change the background color depending on the last command's exit value
     exit_feedback() {

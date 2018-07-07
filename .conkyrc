@@ -1,0 +1,128 @@
+# Conky, a system monitor, based on torsmo
+#
+# Any original torsmo code is licensed under the BSD license
+#
+# All code written since the fork of torsmo is licensed under the GPL
+#
+# Please see COPYING for details
+#
+# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+# All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+# Solarized 6 Numix Colors
+color1 e0e0e0 #white
+color2 5f8700 #green
+color3 af8700 #yellow
+color4 d70000 #red
+color5 0087ff #blue
+color6 d64937 #Numix red
+
+# window
+alignment top_left
+background yes
+maximum_width 1580
+minimum_size 1580 5
+own_window yes
+own_window_class Conky
+own_window_type panel
+
+# borders & other decorations
+border_width 1
+draw_borders no
+stippled_borders 0
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+double_buffer yes
+
+default_bar_size 100 5
+default_color white
+default_outline_color white
+default_shade_color white
+use_xft yes
+# xftfont DejaVu Sans Mono:size=8
+xftfont DejaVu Sans:size=10
+# xftfont FreeMono:size=10
+#xftfont FreeSans:size=9
+gap_x 10
+gap_y 0
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+
+# update intervals
+update_interval 1.0
+update_interval_on_battery 5.0
+cpu_avg_samples 2
+net_avg_samples 2
+
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+
+# if_up net is true if there is a link
+if_up_strictness link
+
+# oneline: cpu mem battery temp volume date time wifi netup detdown
+TEXT
+ ${color2}CPU ${color1}${freq}MHz \
+${color3}\
+${goto 100}${voffset -5}${cpubar cpu1 3,50}\
+${goto 100}${voffset  3}${cpubar cpu2 3,50}\
+${goto 100}${voffset  3}${cpubar cpu3 3,50}\
+${goto 100}${voffset  3}${cpubar cpu4 3,50}\
+${voffset -4}\
+${offset 5}${color4}|${color2}\
+ Load ${color1}${loadavg 1} ${color3}${loadgraph 12,50}\
+${offset 5}${color4}|${color2}\
+ Free ${color1}${memeasyfree}\
+${offset 5}${color2}\
+\
+${color4}${alignc}|\
+${color2}\
+ AC ${color5}${acpiacadapter}\
+${offset 5}${color4}|${color2}\
+ BAT ${color1}${battery_percent}%${color2} ${color4}${battery_time}\
+${offset 5}${color4}|${color3}\
+ Temp ${color1}${acpitemp}${color3}C\
+${offset 5}${color4}|${color5}\
+ Fan ${color1}$ibm_fan${color5}rpm\
+${offset 5}${color4}|${color2}\
+ Vol ${color1}${execi 5 echo "$(ponymix get-volume)%$(ponymix is-muted && echo ' (muted)')$(ponymix -d alsa_input.pci-0000_00_1b.0.analog-stereo --source is-muted && echo ' (mic muted)')"}\
+${offset 5}${color4}|${color3}\
+ Time ${color1}${time %b %d %H:%M}\
+\
+${offset 5}${color4}|${color2}\
+ Desktop <${color}${exec bspc query --desktops --desktop focused --names}${color2}>\
+${offset 5}\
+\
+${color4}${alignr}|\
+${color2}\
+ WiFi ${color1}${addr wlp3s0}\
+${if_up wlp3s0}\
+ $color2(${wireless_essid wlp3s0} $color3${wireless_link_bar 12,50 
+wlp3s0}$color2)\
+ ${color2}↑${color1}${upspeed wlp3s0}${color2} ↓${color1}${downspeed wlp3s0}\
+${endif}  \
+\
+${offset 5}${color4}|${color2}\
+ ${color2}LAN ${color1}${addr enp0s25}\
+${if_up enp0s25}\
+ ${color2}↑${color1}${upspeed enp0s25}${color2} ↓${color1}${downspeed enp0s25}\
+${endif}
