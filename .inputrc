@@ -5,3 +5,10 @@ $include /etc/inputrc
 "\e[A":history-search-backward
 ## arrow down
 "\e[B":history-search-forward
+
+# silence bell
+set bell-style none
+
+# show file type
+set colored-stats on
+set visible-stats on
