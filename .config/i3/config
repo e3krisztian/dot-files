@@ -12,9 +12,9 @@
 set $mod Mod4
 
 # workspace 1 and 2
-workspace 1 output HDMI3
-workspace 2 output LVDS1
-workspace "3: Web" output HDMI3
+workspace 1 output LVDS1
+workspace 2 output HDMI3
+# workspace "3: Web" output HDMI3
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
