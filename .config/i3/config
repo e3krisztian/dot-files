@@ -13,8 +13,9 @@ set $mod Mod4
 
 # workspace 1 and 2
 workspace 1 output LVDS1
-workspace 2 output HDMI3
-# workspace "3: Web" output HDMI3
+workspace 2 output HDMI3 LVDS1
+workspace 3 output HDMI3 LVDS1
+workspace 4 output HDMI3 LVDS1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -180,4 +181,15 @@ bindsym XF86Launch1                exec st -e xev
 # screen lock
 bindsym $mod+l                     exec /usr/bin/i3lock -f -c 053005
 
-# Applications
+# Applications / workspaces
+# assign [class="st-256color"] 1
+
+assign [class="code-oss"] 2
+assign [class="Howl"]     2
+
+assign [class="Chromium"] 3
+assign [class="Firefox"]  4
+
+
+# Startup applications
+exec --no-startup-id i3-msg 'workspace 1; exec st -f "Liberation Mono:size=12" tmux'
