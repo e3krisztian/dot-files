@@ -12,7 +12,7 @@
 set $mod Mod4
 
 # workspace 1 and 2
-workspace 1 output LVDS1
+workspace 1 output HDMI3 LVDS1
 workspace 2 output HDMI3 LVDS1
 workspace 3 output HDMI3 LVDS1
 workspace 4 output HDMI3 LVDS1
@@ -37,7 +37,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec st -f "Liberation Mono:size=12" tmux
+bindsym $mod+Return exec st -f "Fira Code:size=14" tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -48,26 +48,26 @@ bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Control+Left move left
-bindsym $mod+Control+Down move down
-bindsym $mod+Control+Up move up
+bindsym $mod+Control+Left  move left
+bindsym $mod+Control+Down  move down
+bindsym $mod+Control+Up    move up
 bindsym $mod+Control+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+h         split h
 bindsym $mod+Shift+bar split h  # |
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v     split v
 bindsym $mod+minus split v
 bindsym $mod+equal split v
 
@@ -80,10 +80,12 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+# bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+grave floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
+bindsym $mod+grave focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -120,7 +122,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -179,17 +181,23 @@ bindsym Shift+XF86AudioLowerVolume exec pulseaudio-ctl down 1
 bindsym XF86Launch1                exec st -e xev
 
 # screen lock
-bindsym $mod+l                     exec /usr/bin/i3lock -f -c 053005
+bindsym $mod+l                     exec /usr/bin/i3lock -f -i ~/.logo -c 104410
 
 # Applications / workspaces
 # assign [class="st-256color"] 1
 
 assign [class="code-oss"] 2
+assign [class="Code"] 2
 assign [class="Howl"]     2
 
 assign [class="Chromium"] 3
-assign [class="Firefox"]  4
+assign [class="firefox" instance="Navigator"]  4
 
+assign [class="Slack" instance="slack"] 5
 
 # Startup applications
-exec --no-startup-id i3-msg 'workspace 1; exec st -f "Liberation Mono:size=12" tmux'
+exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id st -f "Fira Code:size=14" tmux'
+exec --no-startup-id keynav
+
+# dump environment variables
+# exec --no-startup-id i3-msg 'workspace 1; exec bash --noprofile --norc -c "set | ts >> /tmp/envs"'
