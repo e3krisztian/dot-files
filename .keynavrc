@@ -1,0 +1,81 @@
+# erase default keybindings
+clear
+
+# run in background
+daemonize
+
+# start and stop
+
+alt+space start, grid 7x4
+# Super+space start, cursorzoom 100 100
+Escape      end
+space       end
+Return      click 1,end
+
+# bind arrow keys to move
+Left        cut-left  0.5, warp
+Down        cut-down  0.5, warp
+Up          cut-up    0.5, warp
+Right       cut-right 0.5, warp
+
+shift+Left   move-left  0.5, warp
+shift+Down   move-down  0.5, warp
+shift+Up     move-up    0.5, warp
+shift+Right  move-right 0.5, warp
+
+ctrl+Left    move-left  0.5, warp
+ctrl+Down    move-down  0.5, warp
+ctrl+Up      move-up    0.5, warp
+ctrl+Right   move-right 0.5, warp
+
+alt+Left     move-left  0.5, warp
+alt+Down     move-down  0.5, warp
+alt+Up       move-up    0.5, warp
+alt+Right    move-right 0.5, warp
+
+# clicking
+F1          warp, click 1
+F2          warp, click 2
+F3          warp, click 3
+
+# scrolling - page up-down
+Prior       warp, click 4
+Next        warp, click 5
+
+# dragging - does not work?
+Delete      drag 1
+End         drag 1
+
+BackSpace   history-back
+
+# loadconfig does not work
+# loadconfig ~/nav.map
+
+1   end, start, grid 7x4, cell-select 1x1, warp, grid 2x2
+2   end, start, grid 7x4, cell-select 2x1, warp, grid 2x2
+3   end, start, grid 7x4, cell-select 3x1, warp, grid 2x2
+4   end, start, grid 7x4, cell-select 4x1, warp, grid 2x2
+5   end, start, grid 7x4, cell-select 5x1, warp, grid 2x2
+6   end, start, grid 7x4, cell-select 6x1, warp, grid 2x2
+7   end, start, grid 7x4, cell-select 7x1, warp, grid 2x2
+q   end, start, grid 7x4, cell-select 1x2, warp, grid 2x2
+w   end, start, grid 7x4, cell-select 2x2, warp, grid 2x2
+e   end, start, grid 7x4, cell-select 3x2, warp, grid 2x2
+r   end, start, grid 7x4, cell-select 4x2, warp, grid 2x2
+t   end, start, grid 7x4, cell-select 5x2, warp, grid 2x2
+y   end, start, grid 7x4, cell-select 6x2, warp, grid 2x2
+u   end, start, grid 7x4, cell-select 7x2, warp, grid 2x2
+a   end, start, grid 7x4, cell-select 1x3, warp, grid 2x2
+s   end, start, grid 7x4, cell-select 2x3, warp, grid 2x2
+d   end, start, grid 7x4, cell-select 3x3, warp, grid 2x2
+f   end, start, grid 7x4, cell-select 4x3, warp, grid 2x2
+g   end, start, grid 7x4, cell-select 5x3, warp, grid 2x2
+h   end, start, grid 7x4, cell-select 6x3, warp, grid 2x2
+j   end, start, grid 7x4, cell-select 7x3, warp, grid 2x2
+z   end, start, grid 7x4, cell-select 1x4, warp, grid 2x2
+x   end, start, grid 7x4, cell-select 2x4, warp, grid 2x2
+c   end, start, grid 7x4, cell-select 3x4, warp, grid 2x2
+v   end, start, grid 7x4, cell-select 4x4, warp, grid 2x2
+b   end, start, grid 7x4, cell-select 5x4, warp, grid 2x2
+n   end, start, grid 7x4, cell-select 6x4, warp, grid 2x2
+m   end, start, grid 7x4, cell-select 7x4, warp, grid 2x2
