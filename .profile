@@ -35,7 +35,7 @@ if [ "$SSH_AUTH_SOCK" = "" ] ; then
     if [ "$DISPLAY" = "" ] ; then
         eval $(ssh-agent -s)
     else
-        eval $(gnome-keyring-daemon -d)
+        eval $(gnome-keyring-daemon --start)
     fi
     export SSH_AUTH_SOCK
 fi
