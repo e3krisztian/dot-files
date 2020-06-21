@@ -9,6 +9,9 @@ $include /etc/inputrc
 # silence bell
 set bell-style none
 
+# bracketed paste
+set enable-bracketed-paste on
+
 # show file type
 set colored-stats on
 set visible-stats on
