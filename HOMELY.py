@@ -1,22 +1,27 @@
 from homely.files import mkdir, symlink
-from homely.pipinstall import pipinstall
-
-pipinstall("ranger")
-pipinstall("pipenv")
-pipinstall("raiseorlaunch")
+from homely.install import installpkg
 
 mkdir("~/.config")
 
 mkdir("~/.local/bin")
 symlink("~/.local/bin", "~/bin")
 
+symlink(".profile")
+symlink(".profile", "~/.bash_profile")
+
 symlink(".bashrc")
 symlink(".bashrc.d")
 
+installpkg("i3-wm")
+installpkg("i3lock")
 symlink(".config/i3", "~/.config/i3")
+
+installpkg("i3status")
 symlink(".config/i3status", "~/.config/i3status")
-symlink(".conkyrc")
+
+installpkg("keynav")
+symlink(".keynavrc")
 
 symlink(".inputrc")
-symlink(".profile")
-symlink(".profile", "~/.bash_profile")
+installpkg("tmux")
+symlink(".tmux.conf")
