@@ -13,25 +13,25 @@ space        end
 Return       click 1,end
 
 # bind arrow keys to move
-Left         cut-left   0.5, warp
-Down         cut-down   0.5, warp
-Up           cut-up     0.5, warp
-Right        cut-right  0.5, warp
+Left         move-left   0.5, warp
+Down         move-down   0.5, warp
+Up           move-up     0.5, warp
+Right        move-right  0.5, warp
 
-shift+Left   move-left  0.5, warp
-shift+Down   move-down  0.5, warp
-shift+Up     move-up    0.5, warp
-shift+Right  move-right 0.5, warp
+shift+Left   cut-left    0.5, warp
+shift+Down   cut-down    0.5, warp
+shift+Up     cut-up      0.5, warp
+shift+Right  cut-right   0.5, warp
 
-ctrl+Left    move-left  0.5, warp
-ctrl+Down    move-down  0.5, warp
-ctrl+Up      move-up    0.5, warp
-ctrl+Right   move-right 0.5, warp
+ctrl+Left    cut-left    0.5, warp
+ctrl+Down    cut-down    0.5, warp
+ctrl+Up      cut-up      0.5, warp
+ctrl+Right   cut-right   0.5, warp
 
-alt+Left     move-left  0.5, warp
-alt+Down     move-down  0.5, warp
-alt+Up       move-up    0.5, warp
-alt+Right    move-right 0.5, warp
+alt+Left     cut-left    0.5, warp
+alt+Down     cut-down    0.5, warp
+alt+Up       cut-up      0.5, warp
+alt+Right    cut-right   0.5, warp
 
 # clicking
 F1          warp, click 1
