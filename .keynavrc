@@ -8,15 +8,15 @@ daemonize
 
 alt+space start, grid 7x4
 # Super+space start, cursorzoom 100 100
-Escape      end
-space       end
-Return      click 1,end
+Escape       end
+space        end
+Return       click 1,end
 
 # bind arrow keys to move
-Left        cut-left  0.5, warp
-Down        cut-down  0.5, warp
-Up          cut-up    0.5, warp
-Right       cut-right 0.5, warp
+Left         cut-left   0.5, warp
+Down         cut-down   0.5, warp
+Up           cut-up     0.5, warp
+Right        cut-right  0.5, warp
 
 shift+Left   move-left  0.5, warp
 shift+Down   move-down  0.5, warp
