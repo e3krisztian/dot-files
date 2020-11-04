@@ -2,7 +2,7 @@
 clear
 
 # run in background
-# daemonize
+daemonize
 
 # start and stop
 
@@ -17,15 +17,15 @@ Up           move-up     0.5, warp
 Right        move-right  0.5, warp
 
 # zoom
-F1           warp, end, start, grid 2 2, cursorzoom 256 256
-F2           warp, end, start, grid 2 2, cursorzoom 196 196
-F3           warp, end, start, grid 2 2, cursorzoom 144 144
-F4           warp, end, start, grid 2 2, cursorzoom 100 100
+F1           warp, end, start, grid 2x2, cursorzoom 256 256
+F2           warp, end, start, grid 2x2, cursorzoom 196 196
+F3           warp, end, start, grid 2x2, cursorzoom 144 144
+F4           warp, end, start, grid 2x2, cursorzoom 100 100
 
-F5           warp, end, start, grid 2 2, cursorzoom 64 64
-F6           warp, end, start, grid 2 2, cursorzoom 36 36
-F7           warp, end, start, grid 2 2, cursorzoom 16 16
-F8           warp, end, start, grid 2 2, cursorzoom 8 8
+F5           warp, end, start, grid 2x2, cursorzoom 64 64
+F6           warp, end, start, grid 2x2, cursorzoom 36 36
+F7           warp, end, start, grid 2x2, cursorzoom 16 16
+F8           warp, end, start, grid 2x2, cursorzoom 8 8
 
 # clicking
 F9           warp, click 1
@@ -47,8 +47,7 @@ Next         warp, click 5
 # dragging - does not work?
 space        drag 1
 
-# loadconfig does not work
-# loadconfig ~/nav.map
+# direct mapping of keys and cells
 
 1   end, start, grid 7x4, cell-select 1x1, warp, grid 2x2
 2   end, start, grid 7x4, cell-select 2x1, warp, grid 2x2
