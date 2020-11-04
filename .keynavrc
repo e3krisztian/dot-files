@@ -2,15 +2,13 @@
 clear
 
 # run in background
-daemonize
+# daemonize
 
 # start and stop
 
 alt+space start, grid 7x4
 # Super+space start, cursorzoom 100 100
 Escape       end
-space        end
-Return       click 1,end
 
 # bind arrow keys to move
 Left         move-left   0.5, warp
@@ -18,35 +16,36 @@ Down         move-down   0.5, warp
 Up           move-up     0.5, warp
 Right        move-right  0.5, warp
 
-shift+Left   cut-left    0.5, warp
-shift+Down   cut-down    0.5, warp
-shift+Up     cut-up      0.5, warp
-shift+Right  cut-right   0.5, warp
+# zoom
+F1           warp, end, start, grid 2 2, cursorzoom 256 256
+F2           warp, end, start, grid 2 2, cursorzoom 196 196
+F3           warp, end, start, grid 2 2, cursorzoom 144 144
+F4           warp, end, start, grid 2 2, cursorzoom 100 100
 
-ctrl+Left    cut-left    0.5, warp
-ctrl+Down    cut-down    0.5, warp
-ctrl+Up      cut-up      0.5, warp
-ctrl+Right   cut-right   0.5, warp
-
-alt+Left     cut-left    0.5, warp
-alt+Down     cut-down    0.5, warp
-alt+Up       cut-up      0.5, warp
-alt+Right    cut-right   0.5, warp
+F5           warp, end, start, grid 2 2, cursorzoom 64 64
+F6           warp, end, start, grid 2 2, cursorzoom 36 36
+F7           warp, end, start, grid 2 2, cursorzoom 16 16
+F8           warp, end, start, grid 2 2, cursorzoom 8 8
 
 # clicking
-F1          warp, click 1
-F2          warp, click 2
-F3          warp, click 3
+F9           warp, click 1
+F10          warp, click 2
+F11          warp, click 3
+
+Return       warp, click 1
+Delete       warp, click 2
+End          warp, click 3
+
+minus        warp, click 1
+equal        warp, click 2
+BackSpace    warp, click 3
 
 # scrolling - page up-down
-Prior       warp, click 4
-Next        warp, click 5
+Prior        warp, click 4
+Next         warp, click 5
 
 # dragging - does not work?
-Delete      drag 1
-End         drag 1
-
-BackSpace   history-back
+space        drag 1
 
 # loadconfig does not work
 # loadconfig ~/nav.map
