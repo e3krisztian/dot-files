@@ -6,7 +6,8 @@ daemonize
 
 # start and stop
 
-alt+space start, grid 7x4
+# alt+space start, grid 7x4
+alt+space start, cursorzoom 16 16
 # Super+space start, cursorzoom 100 100
 Escape       end
 
@@ -16,13 +17,18 @@ Down         move-down   1, warp
 Up           move-up     1, warp
 Right        move-right  1, warp
 
+shift+Left   move-left   1, move-left   1, move-left   1, warp
+shift+Down   move-down   1, move-down   1, move-down   1, warp
+shift+Up     move-up     1, move-up     1, move-up     1, warp
+shift+Right  move-right  1, move-right  1, move-right  1, warp
+
 # zoom
-F1           warp, end, start, grid 2x2, cursorzoom 144 144
-F2           warp, end, start, grid 2x2, cursorzoom 100 100
-F3           warp, end, start, grid 2x2, cursorzoom 64 64
-F4           warp, end, start, grid 2x2, cursorzoom 36 36
-F5           warp, end, start, grid 2x2, cursorzoom 16 16
-F6           warp, end, start, grid 2x2, cursorzoom 8 8
+F1           warp, end, start, grid 2x2, cursorzoom 8 8
+F2           warp, end, start, grid 2x2, cursorzoom 16 16
+F3           warp, end, start, grid 2x2, cursorzoom 36 36
+F4           warp, end, start, grid 2x2, cursorzoom 64 64
+F5           warp, end, start, grid 2x2, cursorzoom 100 100
+F6           warp, end, start, grid 2x2, cursorzoom 144 144
 # F7           warp, end, start, grid 2x2, cursorzoom 16 16
 # F8           warp, end, start, grid 2x2, cursorzoom 8 8
 
@@ -48,31 +54,31 @@ space        drag 1
 
 # direct mapping of keys and cells
 
-1   end, start, grid 7x4, cell-select 1x1, warp, grid 2x2, cursorzoom 144 144
-2   end, start, grid 7x4, cell-select 2x1, warp, grid 2x2, cursorzoom 144 144
-3   end, start, grid 7x4, cell-select 3x1, warp, grid 2x2, cursorzoom 144 144
-4   end, start, grid 7x4, cell-select 4x1, warp, grid 2x2, cursorzoom 144 144
-5   end, start, grid 7x4, cell-select 5x1, warp, grid 2x2, cursorzoom 144 144
-6   end, start, grid 7x4, cell-select 6x1, warp, grid 2x2, cursorzoom 144 144
-7   end, start, grid 7x4, cell-select 7x1, warp, grid 2x2, cursorzoom 144 144
-q   end, start, grid 7x4, cell-select 1x2, warp, grid 2x2, cursorzoom 144 144
-w   end, start, grid 7x4, cell-select 2x2, warp, grid 2x2, cursorzoom 144 144
-e   end, start, grid 7x4, cell-select 3x2, warp, grid 2x2, cursorzoom 144 144
-r   end, start, grid 7x4, cell-select 4x2, warp, grid 2x2, cursorzoom 144 144
-t   end, start, grid 7x4, cell-select 5x2, warp, grid 2x2, cursorzoom 144 144
-y   end, start, grid 7x4, cell-select 6x2, warp, grid 2x2, cursorzoom 144 144
-u   end, start, grid 7x4, cell-select 7x2, warp, grid 2x2, cursorzoom 144 144
-a   end, start, grid 7x4, cell-select 1x3, warp, grid 2x2, cursorzoom 144 144
-s   end, start, grid 7x4, cell-select 2x3, warp, grid 2x2, cursorzoom 144 144
-d   end, start, grid 7x4, cell-select 3x3, warp, grid 2x2, cursorzoom 144 144
-f   end, start, grid 7x4, cell-select 4x3, warp, grid 2x2, cursorzoom 144 144
-g   end, start, grid 7x4, cell-select 5x3, warp, grid 2x2, cursorzoom 144 144
-h   end, start, grid 7x4, cell-select 6x3, warp, grid 2x2, cursorzoom 144 144
-j   end, start, grid 7x4, cell-select 7x3, warp, grid 2x2, cursorzoom 144 144
-z   end, start, grid 7x4, cell-select 1x4, warp, grid 2x2, cursorzoom 144 144
-x   end, start, grid 7x4, cell-select 2x4, warp, grid 2x2, cursorzoom 144 144
-c   end, start, grid 7x4, cell-select 3x4, warp, grid 2x2, cursorzoom 144 144
-v   end, start, grid 7x4, cell-select 4x4, warp, grid 2x2, cursorzoom 144 144
-b   end, start, grid 7x4, cell-select 5x4, warp, grid 2x2, cursorzoom 144 144
-n   end, start, grid 7x4, cell-select 6x4, warp, grid 2x2, cursorzoom 144 144
-m   end, start, grid 7x4, cell-select 7x4, warp, grid 2x2, cursorzoom 144 144
+1   end, start, grid 7x4, cell-select 1x1, warp, grid 2x2, cursorzoom 16 16
+2   end, start, grid 7x4, cell-select 2x1, warp, grid 2x2, cursorzoom 16 16
+3   end, start, grid 7x4, cell-select 3x1, warp, grid 2x2, cursorzoom 16 16
+4   end, start, grid 7x4, cell-select 4x1, warp, grid 2x2, cursorzoom 16 16
+5   end, start, grid 7x4, cell-select 5x1, warp, grid 2x2, cursorzoom 16 16
+6   end, start, grid 7x4, cell-select 6x1, warp, grid 2x2, cursorzoom 16 16
+7   end, start, grid 7x4, cell-select 7x1, warp, grid 2x2, cursorzoom 16 16
+q   end, start, grid 7x4, cell-select 1x2, warp, grid 2x2, cursorzoom 16 16
+w   end, start, grid 7x4, cell-select 2x2, warp, grid 2x2, cursorzoom 16 16
+e   end, start, grid 7x4, cell-select 3x2, warp, grid 2x2, cursorzoom 16 16
+r   end, start, grid 7x4, cell-select 4x2, warp, grid 2x2, cursorzoom 16 16
+t   end, start, grid 7x4, cell-select 5x2, warp, grid 2x2, cursorzoom 16 16
+y   end, start, grid 7x4, cell-select 6x2, warp, grid 2x2, cursorzoom 16 16
+u   end, start, grid 7x4, cell-select 7x2, warp, grid 2x2, cursorzoom 16 16
+a   end, start, grid 7x4, cell-select 1x3, warp, grid 2x2, cursorzoom 16 16
+s   end, start, grid 7x4, cell-select 2x3, warp, grid 2x2, cursorzoom 16 16
+d   end, start, grid 7x4, cell-select 3x3, warp, grid 2x2, cursorzoom 16 16
+f   end, start, grid 7x4, cell-select 4x3, warp, grid 2x2, cursorzoom 16 16
+g   end, start, grid 7x4, cell-select 5x3, warp, grid 2x2, cursorzoom 16 16
+h   end, start, grid 7x4, cell-select 6x3, warp, grid 2x2, cursorzoom 16 16
+j   end, start, grid 7x4, cell-select 7x3, warp, grid 2x2, cursorzoom 16 16
+z   end, start, grid 7x4, cell-select 1x4, warp, grid 2x2, cursorzoom 16 16
+x   end, start, grid 7x4, cell-select 2x4, warp, grid 2x2, cursorzoom 16 16
+c   end, start, grid 7x4, cell-select 3x4, warp, grid 2x2, cursorzoom 16 16
+v   end, start, grid 7x4, cell-select 4x4, warp, grid 2x2, cursorzoom 16 16
+b   end, start, grid 7x4, cell-select 5x4, warp, grid 2x2, cursorzoom 16 16
+n   end, start, grid 7x4, cell-select 6x4, warp, grid 2x2, cursorzoom 16 16
+m   end, start, grid 7x4, cell-select 7x4, warp, grid 2x2, cursorzoom 16 16
