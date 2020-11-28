@@ -38,7 +38,8 @@ floating_modifier $mod
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
 # bindsym $mod+Return exec st -f "Fira Code:size=14" tmux
-bindsym $mod+Return exec st -f "JuliaMono:size=12" tmux
+# bindsym $mod+Return exec st -f "JuliaMono:size=12" tmux
+bindsym $mod+Return exec st -f "Cascadia Code:size=14" tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill
