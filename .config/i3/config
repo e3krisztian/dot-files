@@ -162,6 +162,7 @@ bar {
         # font pango:Symbola 10
         # font pango:DejaVu Sans Mono 10
         # font pango:FreeMono:Bold 9
+        font pango:Cascadia Code 12
         tray_output LVDS1
 }
 
