@@ -184,14 +184,37 @@ bindsym Shift+XF86AudioLowerVolume exec pulseaudio-ctl down 1
 bindsym XF86Launch1                exec st -e xev
 
 # screen lock
-bindsym $mod+l                     exec /usr/bin/i3lock -f -i ~/.logo -c 104410
+set $Locker /usr/bin/i3lock -f -i ~/.logo -c 104410 && sleep 1
+
+bindsym $mod+l                     exec --no-startup-id $Locker, mode "default"
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+
+mode "$mode_system" {
+    bindsym l                      exec --no-startup-id $Locker, mode "default"
+    bindsym e                      exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s                      exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h                      exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r                      exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s                exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Pause mode "$mode_system"
+
+# screenshot
+bindsym --release Print            exec --no-startup-id scrot
+bindsym --release Shift+Print      exec --no-startup-id scrot -s
+
 
 # Applications / workspaces
 # assign [class="st-256color"] 1
 
 assign [class="code-oss"] 2
 assign [class="Code"] 2
-assign [class="Howl"]     2
 
 assign [class="Chromium"] 3
 assign [class="firefox" instance="Navigator"]  4
