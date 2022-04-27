@@ -1,5 +1,6 @@
 # Load pyenv automatically by appending
 # the following to ~/.bash_profile:
 
-eval "$(pyenv init -)"
+export PATH="${HOME}/.pyenv/shims:${PATH}"
 
+eval "$(pyenv init -)"
