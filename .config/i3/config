@@ -5,11 +5,15 @@
 # this file and re-run i3-config-wizard(1).
 #
 
+# https://i3wm.org/docs/userguide.html
+
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+# focus_follows_mouse no
+workspace_auto_back_and_forth yes
 
 # workspace 1 and 2
 workspace 1 output HDMI3 LVDS1
@@ -39,55 +43,91 @@ floating_modifier $mod
 # bindsym $mod+Return exec i3-sensible-terminal
 # bindsym $mod+Return exec st -f "Fira Code:size=14" tmux
 # bindsym $mod+Return exec st -f "JuliaMono:size=12" tmux
-bindsym $mod+Return exec st -f "Cascadia Code:size=14" tmux
+bindsym $mod+Return   exec st -f "Cascadia Code:size=14" tmux
 
 # kill focused window
-bindsym $mod+Shift+q kill
-bindsym $mod+F4      kill
+bindsym $mod+Shift+q       kill
+bindsym $mod+F4            kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d       exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+Left  focus left
-bindsym $mod+Down  focus down
-bindsym $mod+Up    focus up
-bindsym $mod+Right focus right
+bindsym $mod+Left          focus left
+bindsym $mod+Down          focus down
+bindsym $mod+Up            focus up
+bindsym $mod+Right         focus right
 
 # move focused window
-bindsym $mod+Control+Left  move left
-bindsym $mod+Control+Down  move down
-bindsym $mod+Control+Up    move up
-bindsym $mod+Control+Right move right
+bindsym $mod+Shift+Left    move left
+bindsym $mod+Shift+Down    move down
+bindsym $mod+Shift+Up      move up
+bindsym $mod+Shift+Right   move right
+
+# shift-right do not work on some USB keyboards...
+set $mode_move_window Move/(r)esize window / change layout: (f)ullscreen, (F)loating, (s)tacking, (t)abbed, split(h), split(v)
+mode "$mode_move_window" {
+    bindsym Left           move left
+    bindsym Down           move down
+    bindsym Up             move up
+    bindsym Right          move right
+
+    # move focused container to workspace
+    bindsym 1              move container to workspace "1" , mode "default"
+    bindsym 2              move container to workspace "2" , mode "default"
+    bindsym 3              move container to workspace "3" , mode "default"
+    bindsym 4              move container to workspace "4" , mode "default"
+    bindsym 5              move container to workspace "5" , mode "default"
+    bindsym 6              move container to workspace "6" , mode "default"
+    bindsym 7              move container to workspace "7" , mode "default"
+    bindsym 8              move container to workspace "8" , mode "default"
+    bindsym 9              move container to workspace "9" , mode "default"
+    bindsym parenright     move container to workspace "10", mode "default"
+
+    # enter fullscreen mode for the focused container
+    bindsym f              fullscreen toggle
+    bindsym Shift+f        floating toggle
+
+    # change container layout (stacked, tabbed, split?, toggle tabbed)
+    bindsym s              layout stacking
+    bindsym t              layout tabbed
+    bindsym h              layout splith
+    bindsym v              layout splitv
+
+    bindsym r              mode "resize"
+
+    # back to normal: Enter or Escape
+    bindsym Return         mode "default"
+    bindsym Escape         mode "default"
+    bindsym $mod+Tab       mode "default"
+}
+bindsym $mod+Tab           mode "$mode_move_window"
 
 # split in horizontal orientation
-bindsym $mod+h         split h
-bindsym $mod+Shift+bar split h  # |
+bindsym $mod+h             split h
 
 # split in vertical orientation
-bindsym $mod+v     split v
-bindsym $mod+minus split v
-bindsym $mod+equal split v
+bindsym $mod+v             split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+# bindsym $mod+f             fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+s             layout stacking
+# bindsym $mod+w             layout tabbed
+# bindsym $mod+e             layout toggle split
 
 # toggle tiling / floating
-# bindsym $mod+Shift+space floating toggle
-bindsym $mod+Shift+grave floating toggle
+# bindsym $mod+Shift+space   floating toggle
+bindsym $mod+Shift+grave   floating toggle
 
 # change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
-bindsym $mod+grave focus mode_toggle
+# bindsym $mod+space         focus mode_toggle
+bindsym $mod+grave         focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -134,23 +174,26 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize shrink height 10 px or 10 ppt
-        bindsym Up resize grow height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left            resize shrink width  10 px
+        bindsym Down            resize shrink height 10 px
+        bindsym Up              resize grow   height 10 px
+        bindsym Right           resize grow   width  10 px
+
+        bindsym Control+Left    resize shrink width  10 px or 5 ppt
+        bindsym Control+Down    resize shrink height 10 px or 5 ppt
+        bindsym Control+Up      resize grow   height 10 px or 5 ppt
+        bindsym Control+Right   resize grow   width  10 px or 5 ppt
+
+        bindsym $mod+Tab        mode "$mode_move_window"
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+# bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -164,24 +207,9 @@ bar {
         # font pango:FreeMono:Bold 9
         font pango:Cascadia Code 12
         tray_output LVDS1
+        # separator_symbol ":|:"
+        separator_symbol "|"
 }
-
-# Media & Thinkpad special keys
-
-# suspend
-bindsym XF86Sleep                  exec systemctl suspend
-
-bindsym XF86AudioMute              exec pulseaudio-ctl mute
-bindsym XF86AudioMicMute           exec pulseaudio-ctl mute-input
-
-bindsym XF86AudioRaiseVolume       exec pulseaudio-ctl up 10
-bindsym Shift+XF86AudioRaiseVolume exec pulseaudio-ctl up 1
-
-bindsym XF86AudioLowerVolume       exec pulseaudio-ctl down 10
-bindsym Shift+XF86AudioLowerVolume exec pulseaudio-ctl down 1
-
-# should be something sensible
-bindsym XF86Launch1                exec st -e xev
 
 # screen lock
 set $Locker /usr/bin/i3lock -f -i ~/.logo -c 104410 && sleep 1
@@ -210,20 +238,4 @@ bindsym --release Print            exec --no-startup-id scrot
 bindsym --release Shift+Print      exec --no-startup-id scrot -s
 
 
-# Applications / workspaces
-# assign [class="st-256color"] 1
-
-assign [class="code-oss"] 2
-assign [class="Code"] 2
-
-assign [class="Chromium"] 3
-assign [class="firefox" instance="Navigator"]  4
-
-assign [class="Slack" instance="slack"] 5
-
-# Startup applications
-exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id st -f "Fira Code:size=14" tmux'
-exec --no-startup-id keynav
-
-# dump environment variables
-# exec --no-startup-id i3-msg 'workspace 1; exec bash --noprofile --norc -c "set | ts >> /tmp/envs"'
+include host-`hostname`.conf
