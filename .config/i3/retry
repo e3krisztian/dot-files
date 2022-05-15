@@ -1,0 +1,10 @@
+#!/bin/bash
+
+maxcount="$1"
+shift
+
+for _ in $(seq "$maxcount")
+do
+	if "$@"; then return; fi
+    sleep .1
+done

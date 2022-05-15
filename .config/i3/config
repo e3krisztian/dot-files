@@ -15,35 +15,61 @@ set $mod Mod4
 # focus_follows_mouse no
 workspace_auto_back_and_forth yes
 
-# workspace 1 and 2
-workspace 1 output HDMI3 LVDS1
-workspace 2 output HDMI3 LVDS1
-workspace 3 output HDMI3 LVDS1
-workspace 4 output HDMI3 LVDS1
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 9
+font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:DejaVu Sans Mono 8
 
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex --autostart --environment i3
+
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -f -i ~/.logo -c 104410
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume       exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%     && $refresh_i3status
+bindsym XF86AudioLowerVolume       exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%     && $refresh_i3status
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1%      && $refresh_i3status
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1%      && $refresh_i3status
+bindsym XF86AudioMute              exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle   && $refresh_i3status
+bindsym XF86AudioMicMute           exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
-# bindsym $mod+Return exec st -f "Fira Code:size=14" tmux
-# bindsym $mod+Return exec st -f "JuliaMono:size=12" tmux
-bindsym $mod+Return   exec st -f "Cascadia Code:size=14" tmux
+# bindsym $mod+Return        exec i3-sensible-terminal
+# bindsym $mod+Return        exec st -f "Fira Code:size=14" tmux
+# bindsym $mod+Return        exec st -f "JuliaMono:size=12" tmux
+set $terminal              st -f "Cascadia Code:size=10" tmux
+set $terminal_class        st-256color
+bindsym $mod+Return        exec $terminal
 
 # kill focused window
 bindsym $mod+Shift+q       kill
@@ -54,7 +80,7 @@ bindsym $mod+d       exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Shift+d       exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+Left          focus left
@@ -77,16 +103,16 @@ mode "$mode_move_window" {
     bindsym Right          move right
 
     # move focused container to workspace
-    bindsym 1              move container to workspace "1" , mode "default"
-    bindsym 2              move container to workspace "2" , mode "default"
-    bindsym 3              move container to workspace "3" , mode "default"
-    bindsym 4              move container to workspace "4" , mode "default"
-    bindsym 5              move container to workspace "5" , mode "default"
-    bindsym 6              move container to workspace "6" , mode "default"
-    bindsym 7              move container to workspace "7" , mode "default"
-    bindsym 8              move container to workspace "8" , mode "default"
-    bindsym 9              move container to workspace "9" , mode "default"
-    bindsym parenright     move container to workspace "10", mode "default"
+    bindsym 1              move container to workspace $ws1 , mode "default"
+    bindsym 2              move container to workspace $ws2 , mode "default"
+    bindsym 3              move container to workspace $ws3 , mode "default"
+    bindsym 4              move container to workspace $ws4 , mode "default"
+    bindsym 5              move container to workspace $ws5 , mode "default"
+    bindsym 6              move container to workspace $ws6 , mode "default"
+    bindsym 7              move container to workspace $ws7 , mode "default"
+    bindsym 8              move container to workspace $ws8 , mode "default"
+    bindsym 9              move container to workspace $ws9 , mode "default"
+    bindsym parenright     move container to workspace $ws10, mode "default"
 
     # enter fullscreen mode for the focused container
     bindsym f              fullscreen toggle
@@ -136,35 +162,36 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+parenright move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+parenright move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exit
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e  exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -191,6 +218,7 @@ mode "resize" {
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
 
 # bindsym $mod+r mode "resize"
@@ -200,19 +228,13 @@ mode "resize" {
 bar {
         status_command i3status
         position top
-        # font pango:Hack 10
-        # font pango:FontAwesome 10
-        # font pango:Symbola 10
-        # font pango:DejaVu Sans Mono 10
-        # font pango:FreeMono:Bold 9
         font pango:Cascadia Code 12
-        tray_output LVDS1
-        # separator_symbol ":|:"
+        # tray_output LVDS1
         separator_symbol "|"
 }
 
 # screen lock
-set $Locker /usr/bin/i3lock -f -i ~/.logo -c 104410 && sleep 1
+set $Locker xset s activate
 
 bindsym $mod+l                     exec --no-startup-id $Locker, mode "default"
 
@@ -237,5 +259,16 @@ bindsym $mod+Pause mode "$mode_system"
 bindsym --release Print            exec --no-startup-id scrot
 bindsym --release Shift+Print      exec --no-startup-id scrot -s
 
+set $retry ~/.config/i3/retry
+set $wfocus i3-msg "[class=Chromium] focus"
+bindsym $mod+w   exec --no-startup-id $wfocus || (chromium  & $retry 50 $wfocus)
+set $tfocus i3-msg "[class=st-256color] focus"
+bindsym $mod+s   exec --no-startup-id $tfocus || ($terminal & $retry 10 $tfocus)
+set $efocus i3-msg "[class=Sublime_text] focus"
+bindsym $mod+e   exec --no-startup-id $efocus || (subl      & $retry 10 $efocus)
+
+# bindsym $mod+w   exec --no-startup-id i3-msg "[class=Chromium        ] focus" || (chromium & sleep 3 && i3-msg '[class=Chromium] focus')
+# bindsym $mod+s   exec --no-startup-id i3-msg "[class=$terminal_class ] focus" || $terminal
+# bindsym $mod+e   exec --no-startup-id i3-msg "[class=Sublime_text    ] focus" || subl
 
 include host-`hostname`.conf
