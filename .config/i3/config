@@ -115,14 +115,14 @@ mode "$mode_move_window" {
     bindsym parenright     move container to workspace $ws10, mode "default"
 
     # enter fullscreen mode for the focused container
-    bindsym f              fullscreen toggle
-    bindsym Shift+f        floating toggle
+    bindsym f              fullscreen toggle, mode "default"
+    bindsym Shift+f        floating toggle, mode "default"
 
     # change container layout (stacked, tabbed, split?, toggle tabbed)
-    bindsym s              layout stacking
-    bindsym t              layout tabbed
-    bindsym h              layout splith
-    bindsym v              layout splitv
+    bindsym s              layout stacking, mode "default"
+    bindsym t              layout tabbed, mode "default"
+    bindsym h              layout splith, mode "default"
+    bindsym v              layout splitv, mode "default"
 
     bindsym r              mode "resize"
 
@@ -238,15 +238,15 @@ set $Locker xset s activate
 
 bindsym $mod+l                     exec --no-startup-id $Locker, mode "default"
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system System (l) lock, (L) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
 
 mode "$mode_system" {
     bindsym l                      exec --no-startup-id $Locker, mode "default"
-    bindsym e                      exec --no-startup-id i3-msg exit, mode "default"
+    bindsym Shift+l                exec --no-startup-id i3-msg exit, mode "default"
     bindsym s                      exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym h                      exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r                      exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s                exec --no-startup-id systemctl poweroff -i, mode "default"  
+    bindsym p                      exec --no-startup-id systemctl poweroff -i, mode "default"  
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
